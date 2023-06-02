@@ -49,7 +49,8 @@ select {
     outline: none;
 }
 
-.info button {
+.info button,
+.filter button {
     cursor: pointer;
     height: 30px;
     width: 80px;
@@ -77,7 +78,18 @@ select {
 
 #parte-abajo li {
     padding: 20px;
+}
+
+.urgente {
     background-color: aquamarine;
+}
+
+.diaria {
+    background-color: salmon;
+}
+
+.mensual {
+    background-color: lightpink;
 }
 
 #parte-abajo .mensaje {
