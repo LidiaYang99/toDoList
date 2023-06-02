@@ -65,8 +65,8 @@ function addTarea(event) {
 
 btnAdd.addEventListener('click', addTarea)
 
-// filtrar 
-let filtarBtn = document.querySelector('.filter button');
+// ------------------------filtrar tarea---------------------------
+let filtarBtn = document.querySelector('.filter #btn-filtrar');
 let tareaFilter = document.querySelector('.filter input');
 let nivelFilter = document.querySelector('.filter #nivel-filter')
 
@@ -89,12 +89,19 @@ function filterTarea(event) {
     sectionTarea.innerHTML = ""
     printAllTarea(tareaFiltrada, sectionTarea)
 
-    // resetear los contenidos de input y select
+    // resetear los contenidos de input y nivel
     tareaFilter.value = ""
     nivelFilter.value = ""
 }
 
-
-
-
 filtarBtn.addEventListener('click', filterTarea)
+
+
+// -------------------------show All-------------------------------
+let btnShowAll = document.querySelector('.filter #show-all')
+console.log(btnShowAll);
+
+btnShowAll.addEventListener('click', () => {
+    sectionTarea.innerHTML = ""
+    printAllTarea(tareas, sectionTarea)
+})
