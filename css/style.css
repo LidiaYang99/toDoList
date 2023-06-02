@@ -1,0 +1,99 @@
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+li {
+    list-style: none;
+}
+
+.container {
+    max-width: 980px;
+    margin: 20px auto;
+}
+
+/* ---------------------top------------------------------- */
+#parte-arriba {
+    padding: 20px;
+    background-color: pink;
+}
+
+#parte-arriba h2 {
+    margin-bottom: 10px;
+}
+
+.info,
+.filter {
+    display: flex;
+    gap: 15px;
+}
+
+.info div,
+.filter div {
+    width: 40%;
+}
+
+.info input,
+.filter input {
+    text-indent: 1em;
+}
+
+.info input,
+select,
+.filter input,
+select {
+    display: block;
+    width: 100%;
+    height: 30px;
+    outline: none;
+}
+
+.info button {
+    cursor: pointer;
+    height: 30px;
+    width: 80px;
+    background-color: lightskyblue;
+    color: azure;
+    border: none;
+}
+
+/* ----------------------------------medio----------------------- */
+#parte-medio {
+    padding: 10px 20px;
+    background-color: pink;
+}
+
+.filter span {
+    margin-top: 5px;
+}
+
+/* -------------------------------abajo--------------------------------- */
+
+#parte-abajo {
+    min-height: 500px;
+    background-color: lightcyan;
+}
+
+#parte-abajo li {
+    padding: 20px;
+    background-color: aquamarine;
+}
+
+#parte-abajo .mensaje {
+    display: flex;
+    justify-content: space-between;
+    font-size: 20px;
+}
+
+#parte-abajo .mensaje .left {
+    display: flex;
+}
+
+#parte-abajo .mensaje .left input {
+    margin-right: 10px;
+}
+
+#parte-abajo .mensaje span {
+    cursor: pointer;
+}
