@@ -47,41 +47,31 @@ function printOneTarea(pList, pDom) {
         let paraBorrar = tareas.findIndex(tarea => tarea.id === id)
 
         if (paraBorrar !== -1) {
-            tareas.splice(paraBorrar, 1)
+            tareas.splice(paraBorrar, 1);
+            pDom.innerHTML = ""
+            printAllTarea(tareas, pDom)
         }
 
-        console.log(tareas);
-
-
-
-
-
-
-
     })
-
-
-
-
-
     pDom.append(li)
 }
 
 
-
-
-
-
 function printAllTarea(pList, pDom) {
-    pList.forEach(list => printOneTarea(list, pDom))
+
+    if (pList.length !== 0) {
+        pList.forEach(list => printOneTarea(list, pDom));
+    } else {
+        pDom.innerHTML = `<li>No hay tarea</li>`;
+    }
 }
 printAllTarea(tareas, sectionTarea)
+
 
 // --------------------añadir tarea-------------------
 let btnAdd = document.querySelector('.info button');
 let tareaAdd = document.querySelector('.info input');
 let nivelAdd = document.querySelector('.info #nivel');
-
 
 
 function comprobarDuplicado(pList, pNewTares) {
@@ -131,6 +121,7 @@ function addTarea(event) {
 
 btnAdd.addEventListener('click', addTarea)
 
+
 // ------------------------filtrar tarea---------------------------
 let filtarBtn = document.querySelector('.filter #btn-filtrar');
 let tareaFilter = document.querySelector('.filter input');
@@ -174,18 +165,4 @@ btnShowAll.addEventListener('click', () => {
 
 
 
-
-
-
-
-
-
-
-
-
-
-
-
-// 删除事件
-// 没有事件的时候显示空
 // 回车键实现输入
