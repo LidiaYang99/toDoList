@@ -144,8 +144,10 @@ function filterTarea(event) {
         return;
     } else if (nivelFilter.value === "") {
         tareaFiltrada = tareas.filter(tarea => tarea.contenido.toLowerCase().includes(tareaFilter.value.toLowerCase()))
-    } else {
+    } else if (tareaFilter.value === "") {
         tareaFiltrada = tareas.filter(tarea => tarea.nivel === nivelFilter.value)
+    } else {
+        tareaFiltrada = tareas.filter(tarea => tarea.contenido.toLowerCase().includes(tareaFilter.value.toLowerCase()) && tarea.nivel === nivelFilter.value)
     }
 
     console.log(tareaFiltrada);
@@ -159,6 +161,13 @@ function filterTarea(event) {
 }
 
 filtarBtn.addEventListener('click', filterTarea)
+
+// ---------------------filtrar tarea con intro-------------
+tareaFilter.addEventListener('keypress', (event) => {
+    if (event.key === 'Enter') {
+        filterTarea()
+    }
+})
 
 
 // -------------------------show All-------------------------------
