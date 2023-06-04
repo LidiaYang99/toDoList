@@ -119,7 +119,14 @@ function addTarea(event) {
 
 }
 
-btnAdd.addEventListener('click', addTarea)
+btnAdd.addEventListener('click', addTarea);
+
+// --------------------------añadir tarea con intro------------------------
+tareaAdd.addEventListener('keypress', (event) => {
+    if (event.key === 'Enter') {
+        addTarea()
+    }
+})
 
 
 // ------------------------filtrar tarea---------------------------
@@ -162,7 +169,3 @@ btnShowAll.addEventListener('click', () => {
     printAllTarea(tareas, sectionTarea)
 })
 
-
-
-
-// 回车键实现输入
