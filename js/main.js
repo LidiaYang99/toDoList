@@ -1,5 +1,6 @@
 // pDom
 let sectionTarea = document.querySelector('#tarea')
+let id = 2
 
 // -----------------mostrar tareas----------------
 function printOneTarea(pList, pDom) {
@@ -43,12 +44,11 @@ function addTarea(event) {
     }
 
     const newTarea = {
-        id: 2,
+        id: id++,
         contenido: tareaAdd.value,
         nivel: nivelAdd.value
     }
 
-    // 给新加的事件添加id的问题
     // 不能添加相同的事件
 
     tareas.push(newTarea)
@@ -105,3 +105,8 @@ btnShowAll.addEventListener('click', () => {
     sectionTarea.innerHTML = ""
     printAllTarea(tareas, sectionTarea)
 })
+
+
+// 打勾给事件atachar
+// 删除事件
+// 没有事件的时候显示空
