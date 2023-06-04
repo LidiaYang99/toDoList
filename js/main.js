@@ -1,6 +1,7 @@
 // pDom
 let sectionTarea = document.querySelector('#tarea')
 let id = 2
+let flag = true;
 
 // -----------------mostrar tareas----------------
 function printOneTarea(pList, pDom) {
@@ -10,7 +11,7 @@ function printOneTarea(pList, pDom) {
 
     li.innerHTML = `
             <div class="left">
-                <input type="checkbox" style="zoom:130%">
+                <input type="checkbox" style="zoom:130%" name="check-box">
                 <p>${pList.contenido}</p>
             </div>
 
@@ -18,8 +19,28 @@ function printOneTarea(pList, pDom) {
                <span>X</span>
             </div>`
 
+
+    // tachar con checkbox
+    let checkbox = li.querySelector('.left input')
+    console.log(checkbox);
+
+    checkbox.addEventListener('click', () => {
+
+        if (flag) {
+            checkbox.nextElementSibling.style.textDecoration = 'line-through';
+            flag = false;
+        } else {
+            checkbox.nextElementSibling.style.textDecoration = 'none';
+            flag = true;
+        }
+    })
+
     pDom.append(li)
 }
+
+
+
+
 
 
 function printAllTarea(pList, pDom) {
@@ -123,6 +144,19 @@ btnShowAll.addEventListener('click', () => {
 
 
 
-// 打勾给事件atachar
+
+
+
+
+
+
+
+
+
+
+
+
+
 // 删除事件
 // 没有事件的时候显示空
+// 回车键实现输入
