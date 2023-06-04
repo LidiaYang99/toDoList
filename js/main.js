@@ -16,24 +16,53 @@ function printOneTarea(pList, pDom) {
             </div>
 
             <div class="right">
-               <span>X</span>
+               <span data-id=${pList.id}>X</span>
             </div>`
-
 
     // tachar con checkbox
     let checkbox = li.querySelector('.left input')
-    console.log(checkbox);
-
-    checkbox.addEventListener('click', () => {
-
+    checkbox.addEventListener('click', (event) => {
         if (flag) {
-            checkbox.nextElementSibling.style.textDecoration = 'line-through';
+            event.target.nextElementSibling.style.textDecoration = 'line-through';
             flag = false;
         } else {
-            checkbox.nextElementSibling.style.textDecoration = 'none';
+            event.target.nextElementSibling.style.textDecoration = 'none';
             flag = true;
         }
     })
+
+
+    // borrar tarea
+    let deleteTarea = li.querySelector('.right span');
+    deleteTarea.addEventListener('click', (event) => {
+
+        // borrar elemento
+        const padreLi = event.target.parentNode.parentNode;
+        padreLi.parentNode.removeChild(padreLi);
+        console.log(tareas);
+
+
+        // borrar desde array
+        let id = parseInt(event.target.dataset.id)
+        let paraBorrar = tareas.findIndex(tarea => tarea.id === id)
+
+        if (paraBorrar !== -1) {
+            tareas.splice(paraBorrar, 1)
+        }
+
+        console.log(tareas);
+
+
+
+
+
+
+
+    })
+
+
+
+
 
     pDom.append(li)
 }
