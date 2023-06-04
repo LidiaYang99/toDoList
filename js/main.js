@@ -33,8 +33,21 @@ let tareaAdd = document.querySelector('.info input');
 let nivelAdd = document.querySelector('.info #nivel');
 
 
+
+function comprobarDuplicado(pList, pNewTares) {
+    let duplicado = pList.find(tarea => tarea.contenido === pNewTares.contenido)
+
+    if (duplicado) {
+        return 'tarea duplicada'
+    } else {
+        tareas.push(pNewTares);
+        return 'success'
+    }
+}
+
 function addTarea(event) {
 
+    // comprobar si los campos son vacios
     if (tareaAdd.value === "") {
         alert('Tienes que decirme que vas a hacer');
         return
@@ -43,24 +56,27 @@ function addTarea(event) {
         return;
     }
 
-    const newTarea = {
-        id: id++,
+    let newTarea = {
+        id: id,
         contenido: tareaAdd.value,
         nivel: nivelAdd.value
     }
 
-    // 不能添加相同的事件
+    // comprobar si la tarea es duplicada
+    let guardado = comprobarDuplicado(tareas, newTarea)
 
-    tareas.push(newTarea)
-    console.log(newTarea);
-    console.log(tareas);
+    if (guardado === 'success') {
+        sectionTarea.innerHTML = ""
 
-    // resetear los contenidos de input y select
-    sectionTarea.innerHTML = ""
-    tareaAdd.value = ""
-    nivelAdd.value = ""
+        printAllTarea(tareas, sectionTarea);
+        id++;
 
-    printAllTarea(tareas, sectionTarea)
+        tareaAdd.value = ""
+        nivelAdd.value = ""
+    } else {
+        alert(guardado);
+    }
+
 }
 
 btnAdd.addEventListener('click', addTarea)
@@ -99,7 +115,6 @@ filtarBtn.addEventListener('click', filterTarea)
 
 // -------------------------show All-------------------------------
 let btnShowAll = document.querySelector('.filter #show-all')
-console.log(btnShowAll);
 
 btnShowAll.addEventListener('click', () => {
     sectionTarea.innerHTML = ""
