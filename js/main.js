@@ -43,7 +43,14 @@ function printOneTarea(pList, pDom) {
 
 
         // borrar desde array
-        console.log(event.target);
+        let id = parseInt(event.target.dataset.id)
+        let paraBorrar = tareas.findIndex(tarea => tarea.id === id)
+
+        if (paraBorrar !== -1) {
+            tareas.splice(paraBorrar, 1)
+        }
+
+        console.log(tareas);
 
 
 
