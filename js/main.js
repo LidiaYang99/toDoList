@@ -1,7 +1,6 @@
 // pDom
 let sectionTarea = document.querySelector('#tarea')
 let id = 2
-let flag = true;
 
 // -----------------mostrar tareas----------------
 function printOneTarea(pList, pDom) {
@@ -20,16 +19,17 @@ function printOneTarea(pList, pDom) {
             </div>`
 
     // tachar con checkbox
-    let checkbox = li.querySelector('.left input')
-    checkbox.addEventListener('click', (event) => {
-        if (flag) {
-            event.target.nextElementSibling.style.textDecoration = 'line-through';
-            flag = false;
-        } else {
-            event.target.nextElementSibling.style.textDecoration = 'none';
-            flag = true;
+    pDom.addEventListener('click', (event) => {
+      
+        if (event.target.tagName === 'INPUT' && event.target.type === 'checkbox') {
+
+            if (event.target.checked) {
+                event.target.nextElementSibling.style.textDecoration = 'line-through';
+            } else {
+                event.target.nextElementSibling.style.textDecoration = 'none';
+            }
         }
-    })
+    });
 
 
     // borrar tarea
