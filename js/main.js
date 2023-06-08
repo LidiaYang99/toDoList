@@ -20,16 +20,17 @@ function printOneTarea(pList, pDom) {
             </div>`
 
     // tachar con checkbox
-    let checkbox = li.querySelector('.left input')
-    checkbox.addEventListener('click', (event) => {
-        if (flag) {
-            event.target.nextElementSibling.style.textDecoration = 'line-through';
-            flag = false;
-        } else {
-            event.target.nextElementSibling.style.textDecoration = 'none';
-            flag = true;
+    pDom.addEventListener('click', (event) => {
+        if (event.target.tagName === 'INPUT' && event.target.type === 'checkbox') {
+            const checkbox = event.target;
+
+            if (checkbox.checked) {
+                checkbox.nextElementSibling.style.textDecoration = 'line-through';
+            } else {
+                checkbox.nextElementSibling.style.textDecoration = 'none';
+            }
         }
-    })
+    });
 
 
     // borrar tarea
